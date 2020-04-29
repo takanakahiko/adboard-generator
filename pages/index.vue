@@ -9,7 +9,7 @@
       <div class="container content is-centered has-text-centered">
         <p>背景の色を決めましょう</p>
         <client-only>
-          <chrome-picker v-model="colors" disableAlpha disableFields class="max400"></chrome-picker>
+          <chrome-picker v-model="colors" disableAlpha class="max400"></chrome-picker>
         </client-only>
       </div>
       <div class="container content is-centered has-text-centered">
