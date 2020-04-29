@@ -97,25 +97,33 @@ export default Vue.extend({
       ctx.fillStyle = `rgb(255,255,255)`;
       ctx.fillRect(0, 0, 1200, 800);
       if (this.image1DataURL && this.image2DataURL && this.colors) {
-        const image1 = await this.getImage(this.image1DataURL);
-        const image2 = await this.getImage(this.image2DataURL);
-        const colCount = 5;
-        const rowCount = 6;
+        const colCount = 6;
+        const rowCount = 5;
         const cellWidth = 1200 / colCount;
         const cellHeight = 800 / rowCount;
+
+        const image1 = await this.getImage(this.image1DataURL);
+        const image2 = await this.getImage(this.image2DataURL);
+        const info1 = this.getImageMeta(image1, cellWidth, cellHeight, 10);
+        const info2 = this.getImageMeta(image2, cellWidth, cellHeight, 10);
+
         ctx.fillStyle = this.colors.hex;
         for (let i = 0; i <= colCount; i++) {
           for (let j = 0; j <= rowCount; j++) {
             const x = cellWidth * i;
             const y = cellHeight * j;
-            const imageX = x + 10;
-            const imageY = y + 10;
-            const imageW = cellWidth - 20;
-            const imageH = cellHeight - 20;
             if ((i + j) % 2 == 0) {
               ctx.fillRect(x, y, cellWidth, cellHeight);
+              const imageX = x + info1.ofsetX;
+              const imageY = y + info1.ofsetY;
+              const imageW = info1.scaledW;
+              const imageH = info1.scaledH;
               ctx.drawImage(image1, imageX, imageY, imageW, imageH);
             } else {
+              const imageX = x + info2.ofsetX;
+              const imageY = y + info2.ofsetY;
+              const imageW = info2.scaledW;
+              const imageH = info2.scaledH;
               ctx.drawImage(image2, imageX, imageY, imageW, imageH);
             }
           }
@@ -129,6 +137,24 @@ export default Vue.extend({
         image.onload = () => resolve(image);
         image.src = value;
       });
+    },
+    getImageMeta(
+      image: HTMLImageElement,
+      cellWidth: number,
+      cellHeight: number,
+      padding: number
+    ) {
+      const maxW = cellWidth - padding * 2;
+      const maxH = cellHeight - padding * 2;
+      const scale = Math.min(maxW / image.width, maxH / image.height);
+      const scaledW = image.width * scale;
+      const scaledH = image.height * scale;
+      return {
+        ofsetX: (maxW - scaledW) / 2 + padding,
+        ofsetY: (maxH - scaledH) / 2 + padding,
+        scaledW,
+        scaledH
+      };
     },
     download() {
       const canvas = this.$refs.canvas as HTMLCanvasElement;
