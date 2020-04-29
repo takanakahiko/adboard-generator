@@ -2,7 +2,7 @@
   <div>
     <p>{{ label }}</p>
     <b-field v-if="file==null" class>
-      <b-upload v-model="file" drag-drop class>
+      <b-upload v-model="file" accept="image/*" drag-drop class>
         <section class="section full-width">
           <div class="has-text-centered">
             <p>
