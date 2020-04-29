@@ -1,7 +1,7 @@
 {
-  "name": "adbord-generator",
+  "name": "adboard-generator",
   "version": "1.0.0",
-  "description": "My cat&#39;s meow Nuxt.js project",
+  "description": "バーチャル背景用のアドボードを簡単に作成できます",
   "author": "",
   "private": true,
   "scripts": {
