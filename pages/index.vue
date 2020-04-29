@@ -25,6 +25,15 @@
         <canvas width="1200" height="800" class="canvas" ref="canvas"></canvas>
       </div>
     </section>
+    <footer class="footer">
+  <div class="content has-text-centered">
+    <p>
+      <strong>Adboard Generator</strong> by <a href="https://twitter.com/takanakahiko">takanakahiko</a>. 
+    </p>
+    <p>© Copyright takanakahiko All rights reserved.</p>
+  </div>
+</footer>
+
   </div>
 </template>
 
