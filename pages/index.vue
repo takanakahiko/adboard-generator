@@ -4,7 +4,7 @@
       <div class="hero-body has-text-centered">
         <img src="~/assets/logo.png" class="logo" />
         <div class="links">
-          <a href="https://twitter.com.com/takanakahiko" target="_blank" class="button--green">作った人</a>
+          <a href="https://twitter.com/takanakahiko" target="_blank" class="button--green">作った人</a>
           <a
             href="https://github.com/takanakahiko/adboard-generator"
             target="_blank"
