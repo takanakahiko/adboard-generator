@@ -36,7 +36,7 @@
             <a :href="dameLink" target="_blank" class="button--grey">だめだよ</a>
           </div>
         </div>
-        <canvas width="1200" height="800" class="canvas" ref="canvas"></canvas>
+        <canvas width="2400" height="1600" class="canvas" ref="canvas"></canvas>
       </div>
     </section>
     <footer class="footer">
@@ -95,12 +95,12 @@ export default Vue.extend({
       const ctx = (this.$refs.canvas as HTMLCanvasElement).getContext("2d");
       if (!ctx) return;
       ctx.fillStyle = `rgb(255,255,255)`;
-      ctx.fillRect(0, 0, 1200, 800);
+      ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
       if (this.image1DataURL && this.image2DataURL && this.colors) {
         const colCount = 6;
         const rowCount = 5;
-        const cellWidth = 1200 / colCount;
-        const cellHeight = 800 / rowCount;
+        const cellWidth = ctx.canvas.width / colCount;
+        const cellHeight = ctx.canvas.height / rowCount;
 
         const image1 = await this.getImage(this.image1DataURL);
         const image2 = await this.getImage(this.image2DataURL);
