@@ -5,7 +5,11 @@
         <img src="~/assets/logo.png" class="logo" />
         <div class="links">
           <a href="https://twitter.com.com/takanakahiko" target="_blank" class="button--green">作った人</a>
-          <a href="https://github.com/takanakahiko/adboard-generator" target="_blank" class="button--grey">GitHub</a>
+          <a
+            href="https://github.com/takanakahiko/adboard-generator"
+            target="_blank"
+            class="button--grey"
+          >GitHub</a>
         </div>
       </div>
     </section>
@@ -25,19 +29,25 @@
     </section>
     <section class="section">
       <div class="container content is-centered has-text-centered">
-        <p>こんな感じでどうでしょうか？</p>
+        <div v-if="image1DataURL && image2DataURL" class="content">
+          <p>こんな感じでどうでしょうか？</p>
+          <div class="links">
+            <button @click="download" class="button--green">いいよ（ダウンロード）</button>
+            <a :href="dameLink" target="_blank" class="button--grey">だめだよ</a>
+          </div>
+        </div>
         <canvas width="1200" height="800" class="canvas" ref="canvas"></canvas>
       </div>
     </section>
     <footer class="footer">
-  <div class="content has-text-centered">
-    <p>
-      <strong>Adboard Generator</strong> by <a href="https://twitter.com/takanakahiko">takanakahiko</a>. 
-    </p>
-    <p>© Copyright takanakahiko All rights reserved.</p>
-  </div>
-</footer>
-
+      <div class="content has-text-centered">
+        <p>
+          <strong>Adboard Generator</strong> by
+          <a href="https://twitter.com/takanakahiko">takanakahiko</a>.
+        </p>
+        <p>© Copyright takanakahiko All rights reserved.</p>
+      </div>
+    </footer>
   </div>
 </template>
 
@@ -59,7 +69,7 @@ export default Vue.extend({
       image1DataURL: null,
       image2DataURL: null,
       colors: {
-        rgba: { r: 255, g: 0, b: 0, a: 1 }
+        hex: "#FF0000"
       }
     } as {
       image1DataURL: string | null;
@@ -119,6 +129,23 @@ export default Vue.extend({
         image.onload = () => resolve(image);
         image.src = value;
       });
+    },
+    download() {
+      const canvas = this.$refs.canvas as HTMLCanvasElement;
+      const link = document.createElement("a");
+      link.href = canvas.toDataURL("image/png");
+      link.download = "adboard.png";
+      link.click();
+    }
+  },
+
+  computed: {
+    dameLink() {
+      const text =
+        "@takanakahiko Adboard Generator がダメだったのでもっと頑張ってください。";
+      return `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+        text
+      )}`;
     }
   }
 });
