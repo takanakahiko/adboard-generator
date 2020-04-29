@@ -3,6 +3,10 @@
     <section class="hero is-light">
       <div class="hero-body has-text-centered">
         <img src="~/assets/logo.png" class="logo" />
+        <div class="links">
+          <a href="https://twitter.com.com/takanakahiko" target="_blank" class="button--green">作った人</a>
+          <a href="https://github.com/takanakahiko/adboard-generator" target="_blank" class="button--grey">GitHub</a>
+        </div>
       </div>
     </section>
     <section class="section">
@@ -134,5 +138,31 @@ export default Vue.extend({
 
 .canvas {
   width: 80%;
+}
+
+.button--green {
+  display: inline-block;
+  border-radius: 4px;
+  border: 1px solid #3b8070;
+  color: #3b8070;
+  text-decoration: none;
+  padding: 10px 30px;
+}
+.button--green:hover {
+  color: #fff;
+  background-color: #3b8070;
+}
+.button--grey {
+  display: inline-block;
+  border-radius: 4px;
+  border: 1px solid #35495e;
+  color: #35495e;
+  text-decoration: none;
+  padding: 10px 30px;
+  margin-left: 15px;
+}
+.button--grey:hover {
+  color: #fff;
+  background-color: #35495e;
 }
 </style>
