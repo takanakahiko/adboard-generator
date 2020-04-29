@@ -20,14 +20,17 @@
     }
   },
   "dependencies": {
-    "nuxt": "^2.0.0",
     "@nuxt/typescript-runtime": "^0.4.0",
-    "nuxt-buefy": "^0.3.2"
+    "nuxt": "^2.0.0",
+    "nuxt-buefy": "^0.3.2",
+    "verte": "0.0.12",
+    "vue-color": "^2.7.1"
   },
   "devDependencies": {
     "@nuxt/typescript-build": "^0.6.0",
     "@nuxtjs/eslint-config-typescript": "^1.0.0",
     "@nuxtjs/eslint-module": "^1.0.0",
+    "@types/vue-color": "^2.4.2",
     "babel-eslint": "^10.0.1",
     "eslint": "^6.1.0",
     "eslint-plugin-nuxt": ">=0.4.2",
